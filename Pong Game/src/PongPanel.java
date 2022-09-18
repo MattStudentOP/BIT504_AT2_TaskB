@@ -16,7 +16,7 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	private final static Color BACKGROUND_COLOR = Color.black;
 	private final static int TIMER_DELAY = 5;
 	private final static int BALL_MOVEMENT_SPEED = 8;
-	private final static int POINTS_TO_WIN = 3;
+	private final static int MINIMUM_POINTS_TO_WIN = 3;
 	private final static int SCORE_TEXT_X = 100;
 	private final static int SCORE_TEXT_Y = 100;
 	private final static int WIN_TEXT_X = 200;
@@ -212,13 +212,13 @@ public class PongPanel extends JPanel implements ActionListener, KeyListener {
 	
 	public void checkWin() {
 		
-		if (player1Score >= POINTS_TO_WIN) {
+		if (player1Score >= MINIMUM_POINTS_TO_WIN && (player1Score - 2) >= player2Score) {
 			
 			gameWinner = Player.One;
 			gameState = GameState.GameOver;
 		}
 		
-		if (player2Score >= POINTS_TO_WIN) {
+		if (player2Score >= MINIMUM_POINTS_TO_WIN && (player2Score - 2) >= player1Score) {
 			
 			gameWinner = Player.Two;
 			gameState = GameState.GameOver;
